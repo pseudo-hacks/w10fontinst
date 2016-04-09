@@ -27,6 +27,11 @@ Add-Type -AssemblyName System.Drawing
 <# variables #>
 
 $software_name = "w10fontinst"
+$mutexObject = New-Object System.Threading.Mutex($false, $software_name)
+if (-not $mutexObject.WaitOne(0, $false)) {
+    [System.Windows.Forms.MessageBox]::Show("既に起動されています", "確認 - " + $software_name, "OK", "Error")
+    exit
+}
 
 $font_infos = @(
    # Noto Fonts
@@ -266,14 +271,14 @@ $font_infos = @(
 
   # Oradano明朝
   ,@{ name = 'Oradano明朝'
-     ;url = 'http://www.asahi-net.or.jp/~sd5a-ucd/freefonts/Oradano-Mincho/Oradano2016-0408t.zip'
+     ;url = 'http://www.asahi-net.or.jp/~sd5a-ucd/freefonts/Oradano-Mincho/Oradano2016-0409t.zip'
      ;fonts = @(
         ,@{ file = 'Oradano-mincho-t.ttf'; names = @(,'Oradano-mincho-t')}
      )
   }
 
   # 瀬戸フォント
-  ,@{ name = 'setofont'
+  ,@{ name = '瀬戸フォント'
      ;url = 'http://iij.dl.osdn.jp/setofont/61995/setofont_v_6_20.zip'
      ;fonts = @(
         ,@{ file = 'setofont.ttf'; names = @(,'瀬戸フォント')}
@@ -282,7 +287,7 @@ $font_infos = @(
 
   # 梅フォント
   ,@{ name = '梅フォント'
-     ;url = 'http://iij.dl.osdn.jp/ume-font/22212/umefont_590.7z'
+     ;url = 'http://iij.dl.osdn.jp/ume-font/22212/umefont_610.7z'
      ;fonts = @(
         ,@{ file = 'ume-pgc4.ttf'; names = @(,'梅PゴシックC4') }
         ,@{ file = 'ume-pgc5.ttf'; names = @(,'梅PゴシックC5') }
@@ -1557,7 +1562,7 @@ function fontinst_form {
 
     $LicenseTextBox = New-Object System.Windows.Forms.TextBox
     $LicenseTextBox.Location = '8, 110'
-    $LicenseTextBox.Size = '435, 266'
+    $LicenseTextBox.Size = '435, 180'
     $LicenseTextBox.Multiline = $True
     $LicenseTextBox.Text = "This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -1573,10 +1578,29 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>."
     $LicenseTextBox.ReadOnly = $true
     $AboutPage.Controls.Add($LicenseTextBox)
+
+    if ( $invoked_from -ne 'w10custom' ) {
+      $CustomButton = New-Object System.Windows.Forms.Button
+      $CustomButton.Location = New-Object System.Drawing.Point(8, 300)
+      $CustomButton.Size = New-Object System.Drawing.Size(435, 26)
+      $CustomButton.Text = "Windows 10プライバシー対策＆簡単設定アプリ「w10custom」を起動する"
+      $CustomButton.Add_Click(
+          {
+            Start-Job { iex -Command ('$invoked_from = "w10fontinst";' + ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/pseudo-hacks/w10custom/master/w10custom.ps1'))) }
+          }
+      )
+      $AboutPage.Controls.Add($CustomButton)
+    }
+ 
     
     $Form.ShowDialog() | Out-Null
 }
 
 disclaimer
-#check_admin
+check_admin
 fontinst_form
+
+try {
+    $mutexObject.ReleaseMutex()
+    $mutexObject.Close()
+} catch { }
