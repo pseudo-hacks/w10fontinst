@@ -50,6 +50,7 @@ $font_infos = @(
      )
   }
 
+<#
   ,@{ name = 'Noto Sans'
      ;url = 'https://noto-website-2.storage.googleapis.com/pkgs/NotoSans-hinted.zip'
      ;fonts = @(
@@ -69,6 +70,7 @@ $font_infos = @(
         ,@{ file = 'NotoSerif-Regular.ttf'; names = @(,'Noto Serif') }
      )
   }
+#>
 
   # 源ノ角
   ,@{ name = '源ノ角ゴシック'
@@ -103,8 +105,8 @@ $font_infos = @(
      )
   }
 
-  # M+ FONTS
-  ,@{ name = 'M+ FONTS'
+  # M+ OUTLINE FONTS
+  ,@{ name = 'M+ OUTLINE FONTS'
      ;url = 'http://jaist.dl.osdn.jp/mplus-fonts/62344/mplus-TESTFLIGHT-060.tar.xz'
      ;fonts = @(
         ,@{ file = 'mplus-1c-black.ttf'; names = @(,'M+ 1c black') }
@@ -171,15 +173,6 @@ $font_infos = @(
      )
   }
 
-  # VLゴシック
-  ,@{ name = 'VLゴシック'
-     ;url = 'http://iij.dl.osdn.jp/vlgothic/62375/VLGothic-20141206.zip'
-     ;fonts = @(
-        ,@{ file = 'VL-Gothic-Regular.ttf'; names = @(,'VL ゴシック') }
-        ,@{ file = 'VL-PGothic-Regular.ttf'; names = @(,'VL Pゴシック') }
-     )
-  }
-
   # モトヤ
   ,@{ name = 'モトヤLシーダ3'
      ;url = 'https://raw.githubusercontent.com/android/platform_frameworks_base/master/data/fonts/MTLc3m.ttf'
@@ -198,46 +191,56 @@ $font_infos = @(
   ,@{ name = 'ペン字版 Y.OzFont'
      ;url = 'http://yozvox.web.fc2.com/YOzFont-13.11.7z'
      ;fonts = @(
+        # YOzFont/標準かな
+        ,@{ file = 'YOzRS.TTC'; names = @(,'YOzFont','YOzFont90') }
+        ,@{ file = 'YOzBS.TTC'; names = @(,'YOzFont','YOzFont90') } # 太字
+        ,@{ file = 'YOzRSF.TTC'; names = @(,'YOzFontF','YOzFontF90') } # 等幅
+        ,@{ file = 'YOzBSF.TTC'; names = @(,'YOzFontF','YOzFontF90') } # 太字等幅
+        ,@{ file = 'YOzRSP.TTC'; names = @(,'YOzFontP','YOzFontP90') } # プロポーショナル
+        ,@{ file = 'YOzBSP.TTC'; names = @(,'YOzFontP','YOzFontP90') } # 太字プロポーショナル
+        ,@{ file = 'YOzRSX.ttc'; names = @(,'YOzFontX','YOzFontX90','YOzFontXF','YOzFontXF90','YOzFontXM','YOzFontXM90') } # 英数字ブロック体
+
+        # YOzFontN/新かな
+        ,@{ file = 'YOzRN.TTC'; names = @(,'YOzFontN','YOzFontN90','YOzFontNM','YOzFontNM90') }
+        ,@{ file = 'YOzBN.TTC'; names = @(,'YOzFontN','YOzFontN90','YOzFontNM','YOzFontNM90') }
+        ,@{ file = 'YOzRNF.TTC'; names = @(,'YOzFontNF','YOzFontNF90','YOzFontNMF','YOzFontNMF90') }
+        ,@{ file = 'YOzBNF.TTC'; names = @(,'YOzFontNF','YOzFontNF90','YOzFontNMF','YOzFontNMF90') }
+        ,@{ file = 'YOzRNX.ttc'; names = @(,'YOzFontNX','YOzFontNX90','YOzFontNXF','YOzFontNXF90','YOzFontNXM','YOzFontNXM90') }
+
+        # YOzFontA/あんちっくかな
+        ,@{ file = 'YOzRA.TTC'; names = @(,'YOzFontA','YOzFontA90') }
         ,@{ file = 'YOzBA.TTC'; names = @(,'YOzFontA','YOzFontA90') }
+        ,@{ file = 'YOzRAF.TTC'; names = @(,'YOzFontAF','YOzFontAF90') }
         ,@{ file = 'YOzBAF.TTC'; names = @(,'YOzFontAF','YOzFontAF90') }
+        ,@{ file = 'YOzRAP.TTC'; names = @(,'YOzFontAP','YOzFontAP90') }
         ,@{ file = 'YOzBAP.TTC'; names = @(,'YOzFontAP','YOzFontAP90') }
+
+        # YOzFontC/キュートかな
+        ,@{ file = 'YOzRC.TTC'; names = @(,'YOzFontC','YOzFontC90') }
         ,@{ file = 'YOzBC.TTC'; names = @(,'YOzFontC','YOzFontC90') }
+        ,@{ file = 'YOzRCF.TTC'; names = @(,'YOzFontCF','YOzFontCF90') }
         ,@{ file = 'YOzBCF.TTC'; names = @(,'YOzFontCF','YOzFontCF90') }
+
+        # YOzFontE04/教育かな
+        ,@{ file = 'YOzRE.TTC'; names = @(,'YOzFontE','YOzFontE90','YOzFontEM','YOzFontEM90') }
         ,@{ file = 'YOzBE.TTC'; names = @(,'YOzFontE','YOzFontE90','YOzFontEM','YOzFontEM90') }
         ,@{ file = 'YOzBEF.TTC'; names = @(,'YOzFontEF','YOzFontEF90','YOzFontEMF','YOzFontEMF90') }
-        ,@{ file = 'YOzBN.TTC'; names = @(,'YOzFontN','YOzFontN90','YOzFontNM','YOzFontNM90') }
-        ,@{ file = 'YOzBNF.TTC'; names = @(,'YOzFontNF','YOzFontNF90','YOzFontNMF','YOzFontNMF90') }
-        ,@{ file = 'YOzBS.TTC'; names = @(,'YOzFont','YOzFont90') }
-        ,@{ file = 'YOzBSF.TTC'; names = @(,'YOzFontF','YOzFontF90') }
-        ,@{ file = 'YOzBSP.TTC'; names = @(,'YOzFontP','YOzFontP90') }
-        ,@{ file = 'YOzRA.TTC'; names = @(,'YOzFontA','YOzFontA90') }
-        ,@{ file = 'YOzRAF.TTC'; names = @(,'YOzFontAF','YOzFontAF90') }
-        ,@{ file = 'YOzRAP.TTC'; names = @(,'YOzFontAP','YOzFontAP90') }
-        ,@{ file = 'YOzRC.TTC'; names = @(,'YOzFontC','YOzFontC90') }
-        ,@{ file = 'YOzRCF.TTC'; names = @(,'YOzFontCF','YOzFontCF90') }
-        ,@{ file = 'YOzRE.TTC'; names = @(,'YOzFontE','YOzFontE90','YOzFontEM','YOzFontEM90') }
-        ,@{ file = 'YOzREF.TTC'; names = @(,'YOzFontEF','YOzFontEF90','YOzFontEMF','YOzFontEMF90') }
+        ,@{ file = 'YOzBEF.TTC'; names = @(,'YOzFontEF','YOzFontEF90','YOzFontEMF','YOzFontEMF90') }
         ,@{ file = 'YOzREX.ttc'; names = @(,'YOzFontEX','YOzFontEX90','YOzFontEXF','YOzFontEXF90','YOzFontEXM','YOzFontEXM90') }
-        ,@{ file = 'YOzRN.TTC'; names = @(,'YOzFontN','YOzFontN90','YOzFontNM','YOzFontNM90') }
-        ,@{ file = 'YOzRNF.TTC'; names = @(,'YOzFontNF','YOzFontNF90','YOzFontNMF','YOzFontNMF90') }
-        ,@{ file = 'YOzRNX.ttc'; names = @(,'YOzFontNX','YOzFontNX90','YOzFontNXF','YOzFontNXF90','YOzFontNXM','YOzFontNXM90') }
-        ,@{ file = 'YOzRS.TTC'; names = @(,'YOzFont','YOzFont90') }
-        ,@{ file = 'YOzRSF.TTC'; names = @(,'YOzFontF','YOzFontF90') }
-        ,@{ file = 'YOzRSP.TTC'; names = @(,'YOzFontP','YOzFontP90') }
-        ,@{ file = 'YOzRSX.ttc'; names = @(,'YOzFontX','YOzFontX90','YOzFontXF','YOzFontXF90','YOzFontXM','YOzFontXM90') }
      )
   }
   ,@{ name = '毛筆版 Y.OzFont'
      ;url = 'http://yozvox.web.fc2.com/YOzFontKM-7.01.7z'
      ;fonts = @(
         ,@{ file = 'YOzK.TTC'; names = @(,'YOzFontK','YOzFontK90')}
+        ,@{ file = 'YOzKB.TTC'; names = @(,'YOzFontK','YOzFontK90')}
         ,@{ file = 'YOzKA.TTC'; names = @(,'YOzFontKA','YOzFontKA90')}
         ,@{ file = 'YOzKAB.TTC'; names = @(,'YOzFontKA','YOzFontKA90')}
-        ,@{ file = 'YOzKB.TTC'; names = @(,'YOzFontK','YOzFontK90')}
         ,@{ file = 'YOzM90.ttf'; names = @(,'YOzFontM90')}
         ,@{ file = 'YOzMB90.ttf'; names = @(,'YOzFontM90')}
      )
   }
+  <#
   ,@{ name = '英字版 Y.OzFont'
      ;url = 'http://yozvox.web.fc2.com/YOzEng-1.40.7z'
      ;fonts = @(
@@ -255,27 +258,20 @@ $font_infos = @(
         ,@{ file = 'YOzOTLt.ttc'; names = @(,'YOzFontOTW Light','YOzFontOTWD Light','YOzFontOTWL Light')}
      )
   }
-  ,@{ name = 'MoboGothic / MogaGothic / MogaMincho'
+  ,@{ name = 'モボゴシック/モガゴシック/モガ明朝'
      ;url = 'http://yozvox.web.fc2.com/MoboMoga-001.02.14.7z'
      ;fonts = @(
         ,@{ file = 'mobog.ttc'; names = @(,'Mobo90Gothic','MoboEx90Gothic','MoboExGothic','MoboGothic')}
         ,@{ file = 'mobogb.ttc'; names = @(,'Mobo90Gothic','MoboEx90Gothic','MoboExGothic','MoboGothic')}
         ,@{ file = 'mogag.ttc'; names = @(,'Moga90Gothic','MogaEx90Gothic','MogaExGothic','MogaGothic')}
         ,@{ file = 'mogagb.ttc'; names = @(,'Moga90Gothic','MogaEx90Gothic','MogaExGothic','MogaGothic')}
-        ,@{ file = 'mogahm.ttc'; names = @(,'Moga90HMincho','MogaEx90HMincho','MogaExHMincho','MogaHMincho')}
-        ,@{ file = 'mogahmb.ttc'; names = @(,'Moga90HMincho','MogaEx90HMincho','MogaExHMincho','MogaHMincho')}
         ,@{ file = 'mogam.ttc'; names = @(,'Moga90Mincho','MogaEx90Mincho','MogaExMincho','MogaMincho')}
         ,@{ file = 'mogamb.ttc'; names = @(,'Moga90Mincho','MogaEx90Mincho','MogaExMincho','MogaMincho')}
+        ,@{ file = 'mogahm.ttc'; names = @(,'Moga90HMincho','MogaEx90HMincho','MogaExHMincho','MogaHMincho')}
+        ,@{ file = 'mogahmb.ttc'; names = @(,'Moga90HMincho','MogaEx90HMincho','MogaExHMincho','MogaHMincho')}
      )
   }
-
-  # Oradano明朝
-  ,@{ name = 'Oradano明朝'
-     ;url = 'http://www.asahi-net.or.jp/~sd5a-ucd/freefonts/Oradano-Mincho/Oradano2016-0409t.zip'
-     ;fonts = @(
-        ,@{ file = 'Oradano-mincho-t.ttf'; names = @(,'Oradano-mincho-t')}
-     )
-  }
+  #>
 
   # 瀬戸フォント
   ,@{ name = '瀬戸フォント'
@@ -307,6 +303,15 @@ $font_infos = @(
         ,@{ file = 'ume-tms3.ttf'; names = @(,'梅明朝S3') }
         ,@{ file = 'ume-ugo4.ttf'; names = @(,'梅UIゴシック') }
         ,@{ file = 'ume-ugo5.ttf'; names = @(,'梅UIゴシックO5') }
+     )
+  }
+
+  # VLゴシック
+  ,@{ name = 'VLゴシック'
+     ;url = 'http://iij.dl.osdn.jp/vlgothic/62375/VLGothic-20141206.zip'
+     ;fonts = @(
+        ,@{ file = 'VL-Gothic-Regular.ttf'; names = @(,'VL ゴシック') }
+        ,@{ file = 'VL-PGothic-Regular.ttf'; names = @(,'VL Pゴシック') }
      )
   }
 
@@ -856,6 +861,7 @@ $font_infos = @(
         ,@{ file = 'rounded-x-mgenplus-2pp-thin.ttf'; names = @(,'Rounded-X Mgen+ 2pp thin')}
      )
   }
+<#
   ,@{ name = 'KHドットフォント'
      ;url = 'http://iij.dl.osdn.jp/users/8/8545/khdotfont-20150527.7z'
      ;fonts = @(
@@ -876,7 +882,7 @@ $font_infos = @(
         ,@{ file = 'KH-Dot-Ningyouchou-16.ttf'; names = @(,'KHドット人形町16')}
      )
   }
-  ,@{ name = '自家製ドットフォント'
+  ,@{ name = 'JFドットフォント'
      ;url = 'http://iij.dl.osdn.jp/users/8/8541/jfdotfont-20150527.7z'
      ;fonts = @(
         ,@{ file = 'JF-Dot-Ayu18.ttf'; names = @(,'JFドットAyuゴシック18')}
@@ -935,60 +941,9 @@ $font_infos = @(
         ,@{ file = 'JF-Dot-ShinonomeMin16B.ttf'; names = @(,'JFドット東雲明朝16')}
      )
   }
+#>
 
-  # 武蔵システム
-  ,@{ name = '青柳疎石フォント'
-     ;url = 'http://opentype.jp/bin/AoyagiSosekiFontOTF.zip'
-     ;fonts = @(
-        ,@{ file = 'AoyagiSosekiFont2.otf'; names = @(,'青柳疎石フォント2 OTF')}
-     )
-  }
-  ,@{ name = '青柳衡山フォントT'
-     ;url = 'http://opentype.jp/bin/AoyagiKouzanTOTF.zip'
-     ;fonts = @(
-        ,@{ file = 'AoyagiKouzanTOTF.otf'; names = @(,'青柳衡山フォントT OTF')}
-     )
-  }
-  ,@{ name = '青柳隷書しも'
-     ;url = 'http://opentype.jp/bin/aoyagireisyosimo_otf_2_01.zip'
-     ;fonts = @(
-        ,@{ file = 'aoyagireisyosimo_otf_2_01.otf'; names = @(,'青柳隷書SIMO2_O')}
-     )
-  }
-  ,@{ name = '衡山毛筆フォント'
-     ;url = 'http://opentype.jp/bin/KouzanMouhituFontOTF.zip'
-     ;fonts = @(
-        ,@{ file = 'KouzanMouhituFontOTF.otf'; names = @(,'衡山毛筆フォント OTF')}
-     )
-  }
-  ,@{ name = '衡山毛筆フォント草書'
-     ;url = 'http://opentype.jp/bin/KouzanSoushoOTF.zip'
-     ;fonts = @(
-        ,@{ file = 'KouzanSoushoOTF.otf'; names = @(,'衡山毛筆フォント草書 OTF')}
-     )
-  }
-  ,@{ name = '衡山毛筆フォント行書'
-     ;url = 'http://opentype.jp/bin/KouzanGyoushoOTF.zip'
-     ;fonts = @(
-        ,@{ file = 'KouzanGyoushoOTF.otf'; names = @(,'衡山毛筆フォント行書 OTF')}
-     )
-  }
-  ,@{ name = '半角フォント'
-     ;url = 'http://opentype.jp/bin/halffont.zip'
-     ;fonts = @(
-        ,@{ file = 'TTEditHalfGothic.ttf'; names = @(,'TTEdit半角ゴシック')}
-        ,@{ file = 'TTEditHalfMincho.ttf'; names = @(,'TTEdit半角明朝')}
-     )
-  }
-  ,@{ name = '2/3角フォント'
-     ;url = 'http://opentype.jp/bin/twobythree.zip'
-     ;fonts = @(
-        ,@{ file = 'TTEdit2by3Gothic.ttf'; names = @(,'TTEdit2/3ゴシック')}
-        ,@{ file = 'TTEdit2by3Mincho.ttf'; names = @(,'TTEdit2/3明朝')}
-     )
-  }
-  
-  # Kazewakaフォント
+  # Kazesawaフォント
   ,@{ name = 'Kazesawaフォント'
      ;url = 'https://github.com/kazesawa/kazesawa/releases/download/alpha-v1/kazesawa.zip'
      ;fonts = @(
@@ -1010,10 +965,10 @@ $font_infos = @(
      )
   }
   ,@{ name = 'MigMix 2P'
-     ;url = 'http://iij.dl.osdn.jp/mix-mplus-ipa/63544/migmix-1m-20150712.zip'
+     ;url = 'http://iij.dl.osdn.jp/mix-mplus-ipa/63544/migmix-2p-20150712.zip'
      ;fonts = @(
-        ,@{ file = 'migmix-1m-bold.ttf'; names = @(,'MigMix 1M')}
-        ,@{ file = 'migmix-1m-regular.ttf'; names = @(,'MigMix 1M')}
+        ,@{ file = 'migmix-2p-bold.ttf'; names = @(,'MigMix 2P')}
+        ,@{ file = 'migmix-2p-regular.ttf'; names = @(,'MigMix 2P')}
      )
   }
   ,@{ name = 'MigMix 1M'
@@ -1059,6 +1014,18 @@ $font_infos = @(
      )
   }
 
+  # 小瑠璃フォント
+  ,@{ name = '小瑠璃フォント'
+     ;url = 'http://iij.dl.osdn.jp/koruri/63935/Koruri-20151021.7z'
+     ;fonts = @(
+        ,@{ file = 'Koruri-Bold.ttf'; names = @(,'Koruri Bold')}
+        ,@{ file = 'Koruri-Extrabold.ttf'; names = @(,'Koruri Extrabold')}
+        ,@{ file = 'Koruri-Light.ttf'; names = @(,'Koruri Light')}
+        ,@{ file = 'Koruri-Regular.ttf'; names = @(,'Koruri Regular')}
+        ,@{ file = 'Koruri-Semibold.ttf'; names = @(,'Koruri Semibold')}
+     )
+  }
+
   # Myrica
   ,@{ name = 'Myrica'
      ;url = 'https://github.com/tomokuni/Myrica/raw/master/product/Myrica.7z'
@@ -1088,6 +1055,7 @@ $font_infos = @(
      )
   }
 
+<#
   # 刻シリーズ
   ,@{ name = '刻明朝フォント'
      ;url = 'http://freefonts.jp/dl_3qa5ju5a45/ki_kokumin.zip'
@@ -1142,23 +1110,59 @@ $font_infos = @(
      )
   }
   
-  # 小瑠璃フォント
-  ,@{ name = '小瑠璃フォント'
-     ;url = 'http://iij.dl.osdn.jp/koruri/63935/Koruri-20151021.7z'
-     ;fonts = @(
-        ,@{ file = 'Koruri-Bold.ttf'; names = @(,'Koruri Bold')}
-        ,@{ file = 'Koruri-Extrabold.ttf'; names = @(,'Koruri Extrabold')}
-        ,@{ file = 'Koruri-Light.ttf'; names = @(,'Koruri Light')}
-        ,@{ file = 'Koruri-Regular.ttf'; names = @(,'Koruri Regular')}
-        ,@{ file = 'Koruri-Semibold.ttf'; names = @(,'Koruri Semibold')}
-     )
-  }
-
   # 新コミック体
   ,@{ name = '新コミック体'
      ;url = 'http://www.font910.jp/freefont_i6wiwk5/f910-shin-comic-2.01.zip'
      ;fonts = @(
         ,@{ file = 'f910-shin-comic-2.01.otf'; names = @(,'F910新コミック体')}
+     )
+  }
+#>
+
+  # 武蔵システム
+  ,@{ name = '青柳疎石フォント'
+     ;url = 'http://opentype.jp/bin/AoyagiSosekiFontOTF.zip'
+     ;fonts = @(
+        ,@{ file = 'AoyagiSosekiFont2.otf'; names = @(,'青柳疎石フォント2 OTF')}
+     )
+  }
+  ,@{ name = '衡山毛筆フォント'
+     ;url = 'http://opentype.jp/bin/KouzanMouhituFontOTF.zip'
+     ;fonts = @(
+        ,@{ file = 'KouzanMouhituFontOTF.otf'; names = @(,'衡山毛筆フォント OTF')}
+     )
+  }
+  ,@{ name = '青柳衡山フォントT'
+     ;url = 'http://opentype.jp/bin/AoyagiKouzanTOTF.zip'
+     ;fonts = @(
+        ,@{ file = 'AoyagiKouzanTOTF.otf'; names = @(,'青柳衡山フォントT OTF')}
+     )
+  }
+  ,@{ name = '衡山毛筆フォント行書'
+     ;url = 'http://opentype.jp/bin/KouzanGyoushoOTF.zip'
+     ;fonts = @(
+        ,@{ file = 'KouzanGyoushoOTF.otf'; names = @(,'衡山毛筆フォント行書 OTF')}
+     )
+  }
+  ,@{ name = '衡山毛筆フォント草書'
+     ;url = 'http://opentype.jp/bin/KouzanSoushoOTF.zip'
+     ;fonts = @(
+        ,@{ file = 'KouzanSoushoOTF.otf'; names = @(,'衡山毛筆フォント草書 OTF')}
+     )
+  }
+<#
+  ,@{ name = '半角フォント'
+     ;url = 'http://opentype.jp/bin/halffont.zip'
+     ;fonts = @(
+        ,@{ file = 'TTEditHalfGothic.ttf'; names = @(,'TTEdit半角ゴシック')}
+        ,@{ file = 'TTEditHalfMincho.ttf'; names = @(,'TTEdit半角明朝')}
+     )
+  }
+  ,@{ name = '2/3角フォント'
+     ;url = 'http://opentype.jp/bin/twobythree.zip'
+     ;fonts = @(
+        ,@{ file = 'TTEdit2by3Gothic.ttf'; names = @(,'TTEdit2/3ゴシック')}
+        ,@{ file = 'TTEdit2by3Mincho.ttf'; names = @(,'TTEdit2/3明朝')}
      )
   }
 
@@ -1191,6 +1195,7 @@ $font_infos = @(
         ,@{ file = 'nicokaku_v1.ttf'; names = @(,'ニコ角')}
      )
   }
+#>
 )
 
 $script:installed_font_names = @()
@@ -1283,7 +1288,7 @@ function fontinst_form {
                 return
             }
 
-            $font_download_path = (Join-Path $download_path "Fonts")
+            $font_download_path = (Join-Path $download_path $software_name)
             if ( !(Test-Path -Path $font_download_path ) ) {
                 if((New-Item $font_download_path -itemType Directory)) {
                     Write-Debug "$font_download_path フォルダを作成しました。"
@@ -1414,7 +1419,7 @@ function fontinst_form {
                     $LabelB.Text = "フォントをインストールしています…"
                     $LabelB.Refresh()
                     (New-Object -Com "Shell.Application").NameSpace($temp_font_path).Items().InvokeVerbEx("install")
-                    [System.Windows.Forms.MessageBox]::Show("フォントのインストールが終了しました。`n$font_download_path に、ダウンロードしたファイルや展開したフォルダが残っています。必要に応じて参照、削除してください。", "完了 - $software_name", "OK", "Info")
+                    [System.Windows.Forms.MessageBox]::Show("フォントのインストールが終了しました。`n$font_download_path に、ダウンロードしたファイルや展開したフォルダが残っています。`n各フォントのライセンスについては、そちらを参照してください。", "完了 - $software_name", "OK", "Info")
                 } else {
                     [System.Windows.Forms.MessageBox]::Show("フォントはインストールされませんでした。", "完了 - $software_name", "OK", "Info")
                 }
@@ -1579,17 +1584,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>."
     $LicenseTextBox.ReadOnly = $true
     $AboutPage.Controls.Add($LicenseTextBox)
 
-    if ( $invoked_from -ne 'w10custom' ) {
-      $CustomButton = New-Object System.Windows.Forms.Button
-      $CustomButton.Location = New-Object System.Drawing.Point(8, 300)
-      $CustomButton.Size = New-Object System.Drawing.Size(435, 26)
-      $CustomButton.Text = "Windows 10プライバシー対策＆簡単設定アプリ「w10custom」を起動する"
-      $CustomButton.Add_Click(
-          {
-            Start-Job { iex -Command ('$invoked_from = "w10fontinst";' + ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/pseudo-hacks/w10custom/master/w10custom.ps1'))) }
-          }
-      )
-      $AboutPage.Controls.Add($CustomButton)
+    $CustomButton = New-Object System.Windows.Forms.Button
+    $CustomButton.Location = New-Object System.Drawing.Point(8, 300)
+    $CustomButton.Size = New-Object System.Drawing.Size(435, 26)
+    $CustomButton.Text = "Windows 10プライバシー対策＆簡単設定アプリ「w10custom」を起動する"
+    $CustomButton.Add_Click(
+        {
+          Start-Job { iex -Command ('$invoked_from = "w10fontinst";' + ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/pseudo-hacks/w10custom/master/w10custom.ps1'))) }
+        }
+    )
+    $AboutPage.Controls.Add($CustomButton)
+    if ( $invoked_from -eq 'w10custom' ) {
+        $CustomButton.Enabled = $false
     }
  
     
