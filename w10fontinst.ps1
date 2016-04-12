@@ -1526,7 +1526,7 @@ function fontinst_form {
     $SelectionOpenPageButton.Text = "フォントプレビューサイトを開く"
     $SelectionOpenPageButton.Add_Click(
         {
-            start 'http://www.pseudo-hacks.com/fonts/'
+            start 'http://www.pseudo-hacks.com/w10fontinst/#fonts'
         }
     )
     $SelectionPage.Controls.Add($SelectionOpenPageButton)
